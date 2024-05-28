@@ -18,6 +18,6 @@ export class GameService {
   }
 
   addGame(game: GameModel): Observable<any> {
-    return this.http.post(this.baseUrl, game); //test
+    return this.http.post(this.baseUrl, game);
   }
 }
