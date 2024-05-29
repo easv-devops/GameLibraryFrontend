@@ -48,3 +48,32 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.gridDisplay {
+  display: grid;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.detailShow {
+  width: 100%;
+}
+
+.detailHide {
+  width: 0%;
+  visibility: hidden;
+}
+
+.displayDetail{
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto auto;
+}
+
+.noDisplay {
+
+  display: grid;
+  grid-template-columns: auto;
+}
+

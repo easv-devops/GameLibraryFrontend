@@ -13,4 +13,8 @@ export class ConsoleService {
   getConsoles() : Observable<Object>{
     return this.http.get(this.baseUrl + "/GetConsoles")
   }
+
+  getConsole(id: string): Observable<Object>{
+    return this.http.get(this.baseUrl + "/" + id);
+  }
 }

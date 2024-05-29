@@ -15,6 +15,9 @@ export class AppComponent implements OnInit{
   gameData: any;
   consoleData: any;
   genreData: any;
+  selectedGame: any;
+  selectedGameConsole: any;
+  selectedGameGenre: any;
 
   constructor(private genreService: GenreService,
               private consoleService: ConsoleService,
@@ -34,6 +37,59 @@ export class AppComponent implements OnInit{
     game.genreId = addGameForm.value.genreIdInput;
 
 
-    this.gameService.addGame(game).subscribe((response) => {console.log(response);this.ngOnInit()})
+    this.gameService.addGame(game).subscribe((response) => {console.log(response);this.ngOnInit()});
+  }
+
+  setGames(id: string){
+    this.gameService.getGamesFromConsole(id).subscribe(data => this.gameData = data);
+  }
+
+  setSelectedData(){
+    this.consoleService.getConsole(this.selectedGame.consoleId)
+      .subscribe(data => this.selectedGameConsole = data);
+    this.genreService.getGenre(this.selectedGame.genreId).
+    subscribe(data => this.selectedGameGenre = data);
+  }
+  showDetails(id: string) {
+    this.gameService.getGame(id).subscribe(data => this.selectedGame = data);
+    this.setSelectedData();
+
+    let parentDiv = document.getElementById("gameDisplay");
+    let childDiv = document.getElementById("detailContent");
+    // @ts-ignore
+    parentDiv.classList.add('displayDetail');
+    // @ts-ignore
+    parentDiv.classList.remove('noDisplay');
+    // @ts-ignore
+    childDiv.classList.add('detailShow');
+    // @ts-ignore
+    childDiv.classList.remove('detailHide');
+  }
+
+  hideDetails() {
+    let parentDiv = document.getElementById("gameDisplay");
+    let childDiv = document.getElementById("detailContent");
+    // @ts-ignore
+    parentDiv.classList.remove('displayDetail');
+    // @ts-ignore
+    parentDiv.classList.add('noDisplay');
+    // @ts-ignore
+    childDiv.classList.remove('detailShow');
+    // @ts-ignore
+    childDiv.classList.add('detailHide');
+  }
+
+  test() {
+
+    let parentDiv = document.getElementById("gameDisplay");
+    let childDiv = document.getElementById("detailContent");
+    // @ts-ignore
+    parentDiv.classList.add('displayDetail');
+    // @ts-ignore
+    parentDiv.classList.remove('noDisplay');
+    // @ts-ignore
+    childDiv.classList.add('detailShow');
+    // @ts-ignore
+    childDiv.classList.remove('detailHide');
   }
 }

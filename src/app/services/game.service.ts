@@ -17,7 +17,15 @@ export class GameService {
     return this.http.get(this.baseUrl + "/GetGames")
   }
 
+  getGamesFromConsole(id: string) : Observable<Object>{
+    return this.http.get(this.baseUrl + "/GetGames/" + id);
+  }
+
   addGame(game: GameModel): Observable<any> {
     return this.http.post(this.baseUrl, game); //Hej
+  }
+
+  getGame(id: string): Observable<Object>{
+    return this.http.get(this.baseUrl + "/" + id);
   }
 }

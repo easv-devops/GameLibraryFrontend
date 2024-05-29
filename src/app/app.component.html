@@ -3,7 +3,83 @@
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Console</a>
     <div class="dropdown-content">
-      <a *ngFor="let console of consoleData" href="#">{{console.name}}</a>
+      <a *ngFor="let console of consoleData" (click)="setGames(console.id)" >{{console.name}}</a>
     </div>
   </li>
 </ul>
+<div id="gameDisplay" class="noDisplay" style="padding: 10px">
+  <div class="gridDisplay">
+    <mat-card *ngFor="let game of gameData" style="background-color: rgba(204,192,167,20%)">
+      <mat-card-header>
+        <mat-card-title>{{game.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="showDetails(game.id)">Details</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card style="background-color: rgba(204,192,167,20%)">
+      <mat-card-header>
+        <mat-card-title>test</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="test()" >Details</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card style="background-color: rgba(204,192,167,20%)">
+      <mat-card-header>
+        <mat-card-title>test</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="test()" >Details</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card style="background-color: rgba(204,192,167,20%)">
+      <mat-card-header>
+        <mat-card-title>test</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="test()" >Details</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card style="background-color: rgba(204,192,167,20%)">
+      <mat-card-header>
+        <mat-card-title>test</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="test()" >Details</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card style="background-color: rgba(204,192,167,20%)">
+      <mat-card-header>
+        <mat-card-title>test</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="test()" >Details</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card style="background-color: rgba(204,192,167,20%)">
+      <mat-card-header>
+        <mat-card-title>test</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="test()" >Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div id="detailContent" class="detailHide">
+    <mat-card style="background-color: lightcoral; width: 100%">
+      <mat-card-actions align="end">
+        <button mat-button (click)="hideDetails()">Close</button>
+      </mat-card-actions>
+      <mat-card-header>
+        <mat-card-title>{{selectedGame.title}}</mat-card-title>
+        <mat-card-title>Title of selected game</mat-card-title>
+        <mat-card-subtitle>Console name</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

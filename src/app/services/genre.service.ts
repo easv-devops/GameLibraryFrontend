@@ -13,4 +13,8 @@ export class GenreService {
   getGenres() : Observable<Object>{
     return this.http.get(this.baseUrl + "/GetGenres")
   }
+
+  getGenre(id: string): Observable<Object>{
+    return this.http.get(this.baseUrl + "/" + id);
+  }
 }
