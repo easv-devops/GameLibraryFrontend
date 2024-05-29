@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ConsoleService} from "../services/console.service";
 
 @Component({
   selector: 'app-console',
-  standalone: true,
-  imports: [],
   templateUrl: './console.component.html',
   styleUrl: './console.component.css'
 })
-export class ConsoleComponent {
+export class ConsoleComponent implements OnInit{
+  data: any;
+
+  constructor(private service: ConsoleService) {
+  }
+  ngOnInit(): void {
+    this.service.getConsoles().subscribe(data => this.data = data);
+  }
 
 }

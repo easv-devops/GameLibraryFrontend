@@ -9,11 +9,15 @@ import {RouterModule} from "@angular/router";
 
 import {AppRoutingModule, routes} from "./app.routes";
 import {GameComponent} from "./game/game.component";
+import {ConsoleComponent} from "./console/console.component";
+import {GenreComponent} from "./genre/genre.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameComponent
+    GameComponent,
+    ConsoleComponent,
+    GenreComponent
   ],
   imports: [
     BrowserModule,

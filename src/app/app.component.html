@@ -1,4 +1,9 @@
-<h1>HELLO</h1>
-<div>
-  <app-game></app-game>
-</div>
+<ul>
+  <li><a href="#home">My Games</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Console</a>
+    <div class="dropdown-content">
+      <a *ngFor="let console of consoleData" href="#">{{console.name}}</a>
+    </div>
+  </li>
+</ul>
