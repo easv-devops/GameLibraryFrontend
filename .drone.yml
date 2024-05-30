@@ -1,1 +1,80 @@
+kind: pipeline
+type: docker
+name: integration
+
+steps:
+  - name: code-analysis
+    image: boulundeasv/dotnet-sdk-with-java
+    environment:
+      SONARSECRET:
+        from_secret: SonarCubeToken
+      SONARKEY:
+        from_secret: SonarCubeKey
+    commands:
+      - dotnet sonarscanner begin /k:"$SONARKEY" /d:sonar.host.url="http://sonar.setgo.dk:9000" /d:sonar.token="$SONARSECRET"
+      - dotnet build
+      - dotnet sonarscanner end /d:sonar.token="$SONARSECRET"
+
+---
+
+kind: pipeline
+type: docker
+name: deliver
+depends_on:
+  - integration
+
+steps:
+  - name: publish web
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: .
+      dockerfile: Dockerfile
+      repo: magnusandersen/business-app
+      tags: 
+        - frontend
+
+
+  - name: trigger update
+    image: curlimages/curl
+    commands:
+      - "curl --fail -X GET 'http://45.90.123.95:8080/v1/update' -H 'Authorization: Bearer mytoken'" # Must match the token defined in docker-compose.yml
+      - sleep 10
+    depends_on:
+      - publish web
+
+
+---
+
+kind: pipeline
+type: docker
+name: deploy
+depends_on:
+  - deliver
+
+steps:
+  - name: release web
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: .
+      dockerfile: Dockerfile
+      repo: magnusandersen/business-app
+      tags:
+        - frontenddelivery
+      
+
+  - name: trigger update
+    image: curlimages/curl
+    commands:
+      - "curl -X GET 'http://45.90.123.96:8080/v1/update' -H 'Authorization: Bearer mytoken'" # Must match the token defined in docker-compose.yml
+      - sleep 10
+    depends_on:
+      - release web
 
