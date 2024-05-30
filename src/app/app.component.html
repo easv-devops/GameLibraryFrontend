@@ -98,14 +98,14 @@
       </mat-card>
     </div>
     <div id="detailContent" class="detailHide">
-      <mat-card style="background-color: lightcoral; width: 100%">
+      <mat-card style="background-color: lightskyblue; width: 100%">
         <mat-card-actions align="end">
           <button mat-button (click)="hideDetails()">Close</button>
         </mat-card-actions>
         <mat-card-header>
-          <!--<mat-card-title>{{selectedGame.gameTitle}}</mat-card-title>-->
-          <mat-card-title>Title of selected game</mat-card-title>
-          <mat-card-subtitle>Console name</mat-card-subtitle>
+          <mat-card-title>{{selectedGame.gameTitle}}</mat-card-title>
+          <mat-card-subtitle>Console: {{selectedGameConsole.consoleName}}</mat-card-subtitle>
+          <mat-card-subtitle>Genre: {{selectedGameGenre.genreName}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
 
