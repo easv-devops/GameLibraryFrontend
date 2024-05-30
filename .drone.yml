@@ -6,14 +6,13 @@ steps:
   - name: code-analysis
     image: boulundeasv/dotnet-sdk-with-java
     environment:
-      SONARSECRET:
-        from_secret: SonarCubeToken
-      SONARKEY:
+      SONARTOKEN:
         from_secret: SonarCubeKey
     commands:
-      - dotnet sonarscanner begin /k:"$SONARKEY" /d:sonar.host.url="http://sonar.setgo.dk:9000" /d:sonar.token="$SONARSECRET"
-      - dotnet build
-      - dotnet sonarscanner end /d:sonar.token="$SONARSECRET"
+      - sonar-scanner.bat \
+          -D"sonar.projectKey=$SONARTOKEN" \
+          -D"sonar.sources=." \
+          -D"sonar.host.url=http://sonar.setgo.dk:9000"
 
 ---
 
