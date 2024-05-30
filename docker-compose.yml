@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  angular-app:
+    image: magnusandersen/business-app:frontend
+    ports:
+      - "4200:4200"
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --debug --http-api-update
+    environment:
+      - WATCHTOWER_HTTP_API_TOKEN=mytoken
+      - WATCHTOWER_LABEL_ENABLE=true
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+    ports:
+      - 8080:8080
