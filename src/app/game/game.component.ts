@@ -17,7 +17,7 @@ export class GameComponent implements OnInit{
 
   addGame(addGameForm: any): void{
     let game = new GameModel();
-    game.title = addGameForm.value.gameTitleInput;
+    game.gameTitle = addGameForm.value.gameTitleInput;
     game.consoleId = addGameForm.value.consoleIdInput;
     game.genreId = addGameForm.value.genreIdInput;
 

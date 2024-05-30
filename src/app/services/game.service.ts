@@ -22,7 +22,7 @@ export class GameService {
   }
 
   addGame(game: GameModel): Observable<any> {
-    return this.http.post(this.baseUrl, game); //Hej
+    return this.http.post(this.baseUrl, game);
   }
 
   getGame(id: string): Observable<Object>{

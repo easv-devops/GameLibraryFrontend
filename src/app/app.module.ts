@@ -14,6 +14,10 @@ import {ConsoleComponent} from "./console/console.component";
 import {GenreComponent} from "./genre/genre.component";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatButton} from "@angular/material/button";
+import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
+import {MatInput, MatInputModule} from "@angular/material/input";
+import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
+import {MatOption, MatSelect} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -32,6 +36,14 @@ import {MatButton} from "@angular/material/button";
     AppRoutingModule,
     MatCardModule,
     MatButton,
+    MatFormField,
+    MatInput,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioGroup,
+    MatRadioButton,
+    MatSelect,
+    MatOption
   ],
   providers: [
     provideAnimationsAsync('noop')
