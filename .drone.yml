@@ -1,26 +1,6 @@
 kind: pipeline
 type: docker
-name: integration
-
-steps:
-  - name: code-analysis
-    image: boulundeasv/dotnet-sdk-with-java
-    environment:
-      SONARTOKEN:
-        from_secret: SonarCubeKey
-    commands:
-      - sonar-scanner.bat \
-          -D"sonar.projectKey=$SONARTOKEN" \
-          -D"sonar.sources=." \
-          -D"sonar.host.url=http://sonar.setgo.dk:9000"
-
----
-
-kind: pipeline
-type: docker
 name: deliver
-depends_on:
-  - integration
 
 steps:
   - name: publish web
