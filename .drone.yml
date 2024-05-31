@@ -29,7 +29,7 @@ steps:
   - name: end-to-end tests
     image: testcafe/testcafe
     commands:
-      - testcafe chromium:headless test/e2e/count-forecasts.js
+      - testcafe chromium:headless end2end/end2end.js
     depends_on:
       - trigger update
 
